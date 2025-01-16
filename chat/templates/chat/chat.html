@@ -1,0 +1,63 @@
+{% extends 'chat/base.html' %}
+
+{% block content %}
+    <h2 class="chat-title" style="color: blue;">Chat with {{ user.username }}</h2>
+
+    
+    <div class="chat-container">
+        <div id="messages" class="messages-box">
+            {% for message in messages %}
+                <div class="message-item {% if message.sender == user %}sent{% else %}received{% endif %}">
+                    <strong>{{ message.sender.username }}:</strong> {{ message.content }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <form method="POST" class="message-form">
+            {% csrf_token %}
+            <textarea name="message" placeholder="Type your message..." class="message-input" required></textarea>
+            <button type="submit" class="send-btn">Send</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // Function to auto-scroll to the bottom
+        function scrollToBottom() {
+            var messagesBox = document.getElementById('messages');
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }
+
+        // Track if the user is scrolling manually
+        var userIsScrolling = false;
+
+        // Detect manual scroll
+        var messagesBox = document.getElementById('messages');
+        messagesBox.addEventListener('scroll', function() {
+            // If the user has scrolled away from the bottom, prevent auto-scrolling
+            if (messagesBox.scrollHeight - messagesBox.scrollTop !== messagesBox.clientHeight) {
+                userIsScrolling = true;
+            } else {
+                userIsScrolling = false;
+            }
+        });
+
+        // Auto-scroll on page load if the user isn't manually scrolling
+        window.onload = function() {
+            if (!userIsScrolling) {
+                scrollToBottom();
+            }
+        };
+
+        // Auto-scroll after a new message is sent
+        const form = document.querySelector('.message-form');
+        form.addEventListener('submit', function () {
+            setTimeout(function () {
+                if (!userIsScrolling) {
+                    scrollToBottom(); // Only auto-scroll if user isn't manually scrolling
+                }
+            }, 100);
+        });
+    </script>
+{% endblock %}

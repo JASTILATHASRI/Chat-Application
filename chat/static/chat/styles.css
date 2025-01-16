@@ -1,0 +1,344 @@
+
+/* Body and General Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100vh; 
+    padding-top: 60px; 
+}
+
+/* Fixed Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+    z-index: 1000;
+    box-shadow: 0 4px 2px -2px gray;
+}
+
+.navbar nav ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar nav ul li {
+    display: inline;
+}
+
+.navbar nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navbar nav ul li a:hover {
+    background-color: #555;
+}
+
+body {
+    margin-top: 60px; /* Push down the body content so it's not hidden behind the navbar */
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 60px;  /* Adjust to be below the navbar */
+    left: 0;
+    background-color: #f1f1f1;
+    overflow-x: hidden;
+    padding-top: 20px;  /* Reduced padding to fit below navbar */
+    transition: 0.5s;
+    z-index: 999;  /* Ensure sidebar is on top */
+}
+
+/* Close Button */
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    z-index: 1000;  /* Ensure it is on top of the sidebar */
+}
+
+/* Open Button */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: fixed;
+    top: 10px; /* Keep it fixed */
+    left: 10px;
+    z-index: 1001;  /* Higher than sidebar */
+}
+
+
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 50%;
+}
+
+.right-panel {
+    background-color: #f9f9f9;
+    width: 50%;
+    padding: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+    .openbtn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+}
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-width: none;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+}
+.form-container {
+    width: 100%;
+    max-width: 400px; 
+    margin: 0 auto;  
+    padding: 30px;
+    background-color: #f9f9f9; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    margin-top: 50px;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #0056b3;  
+    outline: none;
+}
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #0056b3;  
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #004a8a;  
+}
+
+.messages p {
+    text-align: center;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+.chat-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+.chat-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.messages-box {
+    max-height: 400px;
+    overflow-y: scroll;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+
+.message-item.sent {
+    background-color: #c6f7b1; 
+    align-self: flex-start; 
+}
+
+.message-item.received {
+    background-color: #d1e7fd;  
+    align-self: flex-end;
+}
+
+.message-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    min-height: 60px;
+    margin-bottom: 10px;
+    transition: border 0.3s;
+}
+
+.message-input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+.send-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+    background-color: #004a8a;
+}
+
+.messages-box {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        width: 90%;
+        padding: 15px;
+    }
+    .message-input {
+        font-size: 14px;
+    }
+}
